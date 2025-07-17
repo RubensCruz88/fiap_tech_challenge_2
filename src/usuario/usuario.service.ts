@@ -3,6 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { UsuarioEntity } from "./usuario.entity";
 import { Repository } from "typeorm";
 import { ListaUsuarioDTO } from "./dto/ListaUsuario.dto";
+import { BuscaUsuarioPorEmailDTO } from "./dto/BuscaUsuarioPorEmail.dto";
 
 
 @Injectable()
@@ -51,6 +52,20 @@ export class UsuarioService {
 			usuario.email,
 			usuario.createdAt,
 			usuario.updatedAt
+		)
+	}
+
+	async buscaUsuarioPorEmail(email: string) {
+		const usuario = await this.usuarioRepository.findOneBy({email})
+
+		if(!usuario)
+			throw new NotFoundException('Usuário não encontrado')
+
+		return new BuscaUsuarioPorEmailDTO(
+			usuario.id,
+			usuario.nome,
+			usuario.email,
+			usuario.senha
 		)
 	}
 

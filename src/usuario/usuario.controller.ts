@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, UseGuards } from "@nestjs/common";
 import { CriaUsuarioDTO } from "./dto/CriaUsuario.dto";
 import { UsuarioEntity } from "./usuario.entity";
 import { UsuarioService } from "./usuario.service";
+import { AuthGuard } from "src/guards/auth.guard";
 
 @Controller('/usuarios')
 export class UsuarioController {
@@ -10,6 +11,7 @@ export class UsuarioController {
 		private usuarioService: UsuarioService,
 	) {}
 
+	@UseGuards(AuthGuard)
 	@Get()
 	async listaUsuarios() {
 		return await this.usuarioService.listaUsuarios();
