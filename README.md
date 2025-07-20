@@ -40,6 +40,9 @@ $ npm run start
 # watch mode
 $ npm run start:dev
 
+# run migrations
+$ npm run migration:run
+
 # production mode
 $ npm run start:prod
 ```
