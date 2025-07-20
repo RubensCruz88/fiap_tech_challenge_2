@@ -7,7 +7,7 @@ export class PrimeiraMigration1753019543007 implements MigrationInterface {
         await queryRunner.query(`CREATE TABLE "usuarios" (
 			"id" uuid NOT NULL DEFAULT uuid_generate_v4(), 
 			"nome" character varying(100) NOT NULL, 
-			"senha" character varying(50) NOT NULL, 
+			"senha" character varying(60) NOT NULL, 
 			"email" character varying(70) NOT NULL, 
 			"created_at" TIMESTAMP NOT NULL DEFAULT now(), 
 			"updated_at" TIMESTAMP NOT NULL DEFAULT now(), 
