@@ -1,0 +1,26 @@
+
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+     - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+    steps:
+     -  name: Checkout Repository
+        uses: actions/checkout@v4
+
+     -  name: Build and Push Docker Image
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker build -t $DOCKER_USERNAME/tech_challenge_2:latest --build-arg DB_HOST=${{ secrets.DB_HOST }} --build-arg DB_PORT=${{ secrets.DB_HOST }} --build-arg JWT_SECRET=${{ secrets.DB_HOST }} --build-arg DB_USERNAME=${{ secrets.DB_HOST }} --build-arg DB_PASSWORD=${{ secrets.DB_HOST }} --build-arg DB_NAME=${{ secrets.DB_HOST }} .
+          docker push $DOCKER_USERNAME/tech_challenge_2:latest
+
