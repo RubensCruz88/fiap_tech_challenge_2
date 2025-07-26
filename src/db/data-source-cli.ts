@@ -10,6 +10,6 @@ export const dataSourceOptions = new DataSource({
 	database: process.env.DB_NAME,
 	entities: [__dirname + '/../**/*.entity.{js,ts}'],
 	migrations: [__dirname + '/migrations/*.{js,ts}'],
-	ssl: true
+	ssl: process.env.DB_NAME === 'true'
 
 })

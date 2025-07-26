@@ -27,6 +27,7 @@ RUN echo "DB_PORT=${DB_PORT}" > .env
 RUN echo "DB_USERNAME=${DB_USERNAME}" > .env
 RUN echo "DB_PASSWORD=${DB_PASSWORD}" > .env
 RUN echo "DB_NAME=${DB_NAME}" > .env
+RUN echo "DB_SSL=${DB_SSL}" > .env
 RUN echo "JWT_SECRET=${JWT_SECRET}" > .env
 
 RUN npm run build

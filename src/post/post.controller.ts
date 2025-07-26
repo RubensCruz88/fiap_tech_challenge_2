@@ -7,7 +7,7 @@ import { AuthGuard } from "src/guards/auth.guard";
 import { PostPorIdDTO } from "./dto/PostPorId.dto";
 
 @Controller('/post')
-export class PostCOntroller {
+export class PostController {
 
 	constructor(
 		private postService: PostService
